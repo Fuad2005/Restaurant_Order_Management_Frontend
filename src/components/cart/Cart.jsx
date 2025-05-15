@@ -1,13 +1,24 @@
 import React from 'react'
 import CartItem from './CartItem'
+import { useGlobalState, setGlobalState } from '../../utils/globalState';
 
-function Cart({cartItems, removeItem}) {
+function Cart({removeItem}) {
 
 
     const cartRef = React.useRef();
+    const [ cartTotalPrice ] = useGlobalState('cartTotalPrice')
+
+    const [ cartItems ] = useGlobalState('cartItems');
 
 
 
+    React.useEffect(() => {
+        let sum = 0;
+        cartItems.forEach((cartItem) => {
+          sum += cartItem.price * cartItem.amount;
+        });
+        setGlobalState("cartTotalPrice", sum);
+      }, [cartItems]);
 
     const handleWheel = (e) => {
         e.stopPropagation();
@@ -23,6 +34,8 @@ function Cart({cartItems, removeItem}) {
             cartRef.current.classList.add('bottom-[-50vh]')
         }
     }, [])
+
+
     
 
 
@@ -32,7 +45,7 @@ function Cart({cartItems, removeItem}) {
 
         <div ref={cartRef} className=' transition-all fixed bottom-[-50vh] right-5 rounded-lg bg-white shadow-xl h-1/2 w-[300px] md:w-[400px] z-10'>
             <button onClick={toggleCart} className=' text-white absolute top-[-80px] w-full rounded-lg bg-blue-400 hover:bg-blue-500 transition-all text-xl font-semibold py-5 z-40'>
-                Total: 24.56 AZN
+                Total: {cartTotalPrice} AZN
             </button>
             <div className='flex justify-between items-center px-10 py-3 '>
                 <span>Item</span>
@@ -46,7 +59,7 @@ function Cart({cartItems, removeItem}) {
             </div>
                     <hr />
             <div className='flex justify-around items-center h-[70px]'>
-                <span className='font-semibold text-lg'>Total: 82.41 AZN</span>
+                <span className='font-semibold text-lg'>Total: {cartTotalPrice} AZN</span>
                 <button className='text-white bg-blue-400 hover:bg-blue-500 transition-all text-lg py-2 px-4 rounded-lg'>Order</button>
             </div>
         </div>

@@ -59,7 +59,8 @@ const { setGlobalState, useGlobalState } = createGlobalState({
             price: 1.20,
             category: 'Drink'
         }
-    ]
+    ],
+    cartTotalPrice: 0
 });
 
 
