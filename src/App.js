@@ -5,6 +5,9 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
 import HomePage from './pages/HomePage';
+import TableMenu from './pages/tables/TableMenu';
+import LoginPage from './pages/LoginPage';
+import MenuPage from './pages/MenuPage';
 
 function App() {
   return (
@@ -13,6 +16,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/menu" element={<MenuPage />} />
+          <Route path="/tables/:id" element={<TableMenu />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
       <Footer />
