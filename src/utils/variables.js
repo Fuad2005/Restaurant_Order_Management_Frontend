@@ -1,0 +1,1 @@
+export const LOCAL_BASE_URL = 'http://192.168.0.111:8080/api';

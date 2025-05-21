@@ -17,7 +17,8 @@ function Cart({removeItem}) {
         cartItems.forEach((cartItem) => {
           sum += cartItem.price * cartItem.amount;
         });
-        setGlobalState("cartTotalPrice", sum);
+
+        setGlobalState("cartTotalPrice", sum.toFixed(2));
       }, [cartItems]);
 
     const handleWheel = (e) => {

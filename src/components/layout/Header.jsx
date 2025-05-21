@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import logo from '../../assets/logo.png';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,7 +14,7 @@ export default function Header() {
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <a href="/" className="flex items-center">
             <img
-              src="https://flowbite.com/docs/images/logo.svg"
+              src={logo}
               width={30}
               height={30}
               className="mr-3"
