@@ -34,7 +34,7 @@ function Menu({name='Menu', isTable=false}) {
                 return cartItem;
             }));
         } else {
-            setGlobalState("cartItems", [...cartItems, {name: item, amount: 1, price: menuItems.find((menuItem) => menuItem.name === item).price}]);
+            setGlobalState("cartItems", [...cartItems, {id: menuItems.find((menuItem) => menuItem.name === item).id,name: item, amount: 1, price: menuItems.find((menuItem) => menuItem.name === item).price}]);
         }
         
 
@@ -61,7 +61,7 @@ function Menu({name='Menu', isTable=false}) {
   return (
     <>
 
-        {isTable && <Cart removeItem={removeItem} /> }
+        {isTable && <Cart removeItem={removeItem} tableId={isTable} /> }
         <h1 className='text-4xl font-semibold text-center mt-4'>{name}</h1>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5'>
         

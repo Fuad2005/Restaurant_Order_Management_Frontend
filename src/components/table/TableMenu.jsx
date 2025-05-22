@@ -6,7 +6,7 @@ function TableMenu({id}) {
     <div>
 
         <div className='mx-8'>
-            <Menu name={`Table ${id}`} isTable={true} />
+            <Menu name={`Table ${id}`} isTable={id} />
         </div>
     </div>
   )

@@ -1,8 +1,10 @@
 import React from 'react'
 import CartItem from './CartItem'
 import { useGlobalState, setGlobalState } from '../../utils/globalState';
+import axios from 'axios';
+import { LOCAL_BASE_URL } from '../../utils/variables';
 
-function Cart({removeItem}) {
+function Cart({removeItem, tableId}) {
 
 
     const cartRef = React.useRef();
@@ -37,6 +39,30 @@ function Cart({removeItem}) {
     }, [])
 
 
+    const handleOrder = React.useCallback(() => {
+        let orderData = {
+            tableId: tableId,
+            items: [],
+            status: "NEW"
+        }
+
+        for (let i = 0; i < cartItems.length; i++) {
+            orderData.items.push({
+                menuItemId: cartItems[i].id,
+                quantity: cartItems[i].amount
+            })
+        }
+
+        axios.post(`${LOCAL_BASE_URL}/orders`, orderData).then((res) => {
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            
+        }).catch((err) => {
+            console.log(err);
+        })
+        
+    }, [cartItems, tableId])
+
+
     
 
 
@@ -61,7 +87,7 @@ function Cart({removeItem}) {
                     <hr />
             <div className='flex justify-around items-center h-[70px]'>
                 <span className='font-semibold text-lg'>Total: {cartTotalPrice} AZN</span>
-                <button className='text-white bg-blue-400 hover:bg-blue-500 transition-all text-lg py-2 px-4 rounded-lg'>Order</button>
+                <button onClick={handleOrder} className='text-white bg-blue-400 hover:bg-blue-500 transition-all text-lg py-2 px-4 rounded-lg'>Order</button>
             </div>
         </div>
     

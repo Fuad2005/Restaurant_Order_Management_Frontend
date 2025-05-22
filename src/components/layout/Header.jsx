@@ -3,9 +3,24 @@ import logo from '../../assets/logo.png';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [userRole, setUserRole] = useState(null);
+
+
+  React.useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem('user'));
+    if (userData ) {
+      setUserRole(userData.role);
+    }
+  }, []);
 
   const toggleMenu = useCallback(() => {
     setMenuOpen((prev) => !prev);
+  }, []);
+
+
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem('user');
+    window.location.reload();
   }, []);
 
   return (
@@ -73,14 +88,57 @@ export default function Header() {
                   Menu 
                 </a>
               </li>
-              <li>
-                <a
-                  href="/login"
-                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50"
-                >
-                  Login 
-                </a>
-              </li>
+
+              {userRole === 'WAITER' ? (
+                <>
+                <li>
+                  <a
+                    href="/11d772dff79c4d7cbaff6e3fa491a478"
+                    className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50"
+                  >
+                    Waiter Page
+                  </a>
+                </li>
+                <li>
+                  <p
+                    onClick={handleLogout}
+                    className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 hover:cursor-pointer"
+                  >
+                    Logout
+                  </p>
+                </li>
+                </>
+              ) : userRole==='KITCHEN' ? (
+                <>
+                <li>
+                  <a
+                    href="/b86f6df847644f00aa82f285c2173e70"
+                    className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50"
+                  >
+                    Kitchen Page
+                  </a>
+                </li>
+                <p
+                    onClick={handleLogout}
+                    className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 hover:cursor-pointer"
+                  >
+                    Logout
+                  </p>
+                  </>
+              ) : (
+                
+                <li>
+                  <a
+                    href="/login"
+                    className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50"
+                  >
+                    Login 
+                  </a>
+                </li>
+                
+
+              )}
+
             </ul>
           </div>
         </div>
