@@ -9,65 +9,50 @@ const { setGlobalState, useGlobalState } = createGlobalState({
         // }
     ],
     menuItems: [
-        // {
-        //     name: 'Burger',
-        //     price: 2.50,
-        //     category: 'Fast Food'
-        // },
+
         {
-            name: 'Burger',
-            description: 'udh iasudhfo iasudhf aosiuhdfaos iudhfaosi ud',
+            name: 'Food Item',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
             price: 2.50,
             category: 'Fast Food'
         },
         {
-            name: 'Pizza',
-            description: 'udh iasudhfo iasudhf aosiuhdfaos iudhfaosi ud',
-            price: 12.50,
+            name: 'Food Item',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
+            price: 2.50,
             category: 'Fast Food'
         },
         {
-            name: 'Fries',
-            description: 'udh iasudhfo iasudhf aosiuhdfaos iudhfaosi ud',
-            price: 1.50,
+            name: 'Food Item',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
+            price: 2.50,
             category: 'Fast Food'
         },
         {
-            name: 'jfsoadio saiji jaosdihfoasi oasdjf',
-            description: 'udh iasudhfo iasudhf aosiuhdfaos iudhfaosi ud',
-            price: 9.80,
-            category: 'Other'
+            name: 'Food Item',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
+            price: 2.50,
+            category: 'Fast Food'
         },
         {
-            name: 'Salad',
-            description: 'udh iasudhfo iasudhf aosiuhdfaos iudhfaosi ud',
-            price: 3.50,
-            category: 'Healthy'
+            name: 'Food Item',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
+            price: 2.50,
+            category: 'Fast Food'
         },
         {
-            name: 'Water',
-            description: 'udh iasudhfo iasudhf aosiuhdfaos iudhfaosi ud',
-            price: 1.20,
-            category: 'Drink'
+            name: 'Food Item',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
+            price: 2.50,
+            category: 'Fast Food'
         },
         {
-            name: 'Coca Cola',
-            description: 'udh iasudhfo iasudhf aosiuhdfaos iudhfaosi ud',
-            price: 1.20,
-            category: 'Drink'
-        },
-        {
-            name: 'Fanta',
-            description: 'udh iasudhfo iasudhf aosiuhdfaos iudhfaosi ud',
-            price: 1.20,
-            category: 'Drink'
-        },
-        {
-            name: 'Sprite',
-            description: 'udh iasudhfo iasudhf aosiuhdfaos iudhfaosi ud',
-            price: 1.20,
-            category: 'Drink'
+            name: 'Food Item',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
+            price: 2.50,
+            category: 'Fast Food'
         }
+        
     ],
     cartTotalPrice: 0
 });

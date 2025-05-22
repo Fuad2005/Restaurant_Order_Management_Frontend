@@ -36,7 +36,7 @@ export default function Header() {
               alt="Flowbite Logo"
             />
             <span className="self-center text-xl font-semibold whitespace-nowrap">
-              Restaurant
+              Restaurant App
             </span>
           </a>
           <div className="flex items-center">
@@ -118,6 +118,16 @@ export default function Header() {
                     Kitchen Page
                   </a>
                 </li>
+                <p
+                    onClick={handleLogout}
+                    className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 hover:cursor-pointer"
+                  >
+                    Logout
+                  </p>
+                  </>
+              ) : userRole==='MANAGER' ? (
+                <>
+                
                 <p
                     onClick={handleLogout}
                     className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 hover:cursor-pointer"
