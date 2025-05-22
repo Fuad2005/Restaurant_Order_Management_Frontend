@@ -1,5 +1,7 @@
 import React, { useState, useCallback } from "react";
 import logo from '../../assets/logo.png';
+import axios from "axios";
+import { LOCAL_BASE_URL } from "../../utils/variables";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,8 +21,17 @@ export default function Header() {
 
 
   const handleLogout = useCallback(() => {
-    localStorage.removeItem('user');
-    window.location.reload();
+    axios.post(`${LOCAL_BASE_URL}/auth/logout`, {}, {
+      headers: {
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem('user')).token}`
+      }
+    }).then((res) => {
+      localStorage.removeItem('user');
+      window.location.reload();
+    }).catch((err) => {
+      console.log(err);
+    });
+    
   }, []);
 
   return (
